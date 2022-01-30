@@ -5,7 +5,7 @@ on:
     - cron: "0 0 * * *"
 env:
   ProjectName: shadowsocks
-  Owner: BlueSkyClouds # ${{ github.repository_owner }}
+  Owner: blueskyclouds # ${{ github.repository_owner }}
 
 jobs:
   build:
