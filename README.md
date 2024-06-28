@@ -10,7 +10,7 @@
 
 ### Pull image
 ```
-docker pull ghcr.io/blueskyclouds/shadowsocks
+docker pull ghcr.io/BlueSkyClouds/shadowsocks
 ```
 
 ### Run
@@ -19,7 +19,7 @@ docker run -itd \
 --restart=always \
 --name=ss \
 --net=host \
-ghcr.io/blueskyclouds/shadowsocks \
+ghcr.io/BlueSkyClouds/shadowsocks \
 server \
 -U \
 -s "0.0.0.0:23333" \
@@ -37,7 +37,7 @@ docker run -itd \
 --name=ss \
 -v ~/config:/config:ro \
 --net=host \
-ghcr.io/blueskyclouds/shadowsocks \
+ghcr.io/BlueSkyClouds/shadowsocks \
 server \
 -c /config/ss.json
 ```

@@ -43,13 +43,12 @@ RUN case "$TARGETOS" in \
     && apk add --no-cache build-base git \
     && git clone --depth 1 -b ${SS_RUST_VERSION} https://github.com/shadowsocks/shadowsocks-rust \
     && cd shadowsocks-rust \
-    && wget -qO- "https://github.com/BlueSkyClouds/shadowsocks-docker/releases/download/1.14.2/$MUSL-cross.tgz" | tar -xzC /root/ \
+    && wget -qO- "https://musl.cc/$MUSL-cross.tgz" | tar -xzC /root/ \
     && PATH="/root/$MUSL-cross/bin:$PATH" \
     && CC=/root/$MUSL-cross/bin/$MUSL-gcc \
     && echo "CC=$CC" \
-    && rustup override set nightly \
     && rustup target add "$RUST_TARGET" \
-    && RUSTFLAGS="-C linker=$CC" CC=$CC cargo build --target "$RUST_TARGET" --release --features "armv8 neon stream-cipher aead-cipher-extra" \
+    && RUSTFLAGS="-C linker=$CC" CC=$CC cargo build --target "$RUST_TARGET" --release --features "full" \
     && mv target/$RUST_TARGET/release/ss* target/release/
 
 FROM alpine
